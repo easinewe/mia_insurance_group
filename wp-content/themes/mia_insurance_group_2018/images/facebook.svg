@@ -1,0 +1,18 @@
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>facebook</title>
+  <g>
+    <rect class="cls-1" width="21" height="21"/>
+    <path id="Facebook" class="cls-2" d="M8.58,5.83V7.9H7.07v2.52H8.58v7.51h3.11V10.42h2.08s.2-1.21.29-2.53H11.7V6.16a.74.74,0,0,1,.67-.61h1.7V2.92H11.76C8.5,2.92,8.58,5.45,8.58,5.83Z" transform="translate(-0.07 0)"/>
+  </g>
+</svg>

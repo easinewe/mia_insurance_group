@@ -1,0 +1,702 @@
+/*
+Theme Name: MIA Insurance Group
+Theme URI: https://wordpress.org/themes/twentysixteen/
+Author: eamonnfitzmaurice@gmail.com
+*/
+
+
+/*  Reset | http://meyerweb.com/eric/tools/css/reset/
+---------------------------------------------------------------------- */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,
+caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,
+figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,
+legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,
+strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;vertical-align:baseline}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}
+ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}
+.clear:after,.clear:before,.clearfix:after{content:"";display:block}table{border-collapse:collapse;border-spacing:0}
+.clearfix:after{visibility:hidden;clear:both;height:0}.clear:after{clear:both}.clear{zoom:1}:focus{outline:0}.hidden{display:none}
+
+
+
+/*  Getting Organized // Base Structure & Styles
+---------------------------------------------------------- */
+html, body {
+	height: 100%;
+	-webkit-overflow-scrolling: touch;
+}
+body {
+	background:#FFF;
+	color: black;
+	font-size: 16px;
+	line-height: 26px;
+	letter-spacing: 0.5px;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	max-width: 100vw;
+}
+body, * {
+	box-sizing: border-box;
+}
+p {
+ 	padding: 0 0 20px 0;
+}
+a {
+	text-decoration: none;
+	color: black;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);	
+	cursor: pointer;
+}
+a:hover {
+	color: black;
+}
+a:visited {
+	color: black;
+}
+h4{
+	font-size: 21px;
+}
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+/* Header */
+
+header{
+	color: white;
+	width: 100%;
+	height: 650px;
+	position: relative;
+	overflow: visible;
+}
+header:before{
+	position: absolute;
+	top: 130px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	content: '';
+	width: 100vw;
+	background: #7cbfc0; /* Old browsers */
+	background: -moz-linear-gradient(top, #6ca3a3 0%, #7cbfc0 75%, #7cbfc0 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #6ca3a3 0%,#7cbfc0 75%,#7cbfc0 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #6ca3a3 0%,#7cbfc0 75%,#7cbfc0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6ca3a3', endColorstr='#7cbfc0',GradientType=0 ); /* IE6-9 */
+	display: block;
+	z-index: -1;
+}
+header span{
+	display: block;
+	height: 650px;
+	max-width: 1100px;
+	margin: 0px auto;
+	padding: 0px 20px; 
+	position: relative;
+}
+header h1{
+	position: relative;
+	padding-left: 80px;
+}
+header h1:before{
+	content: '';
+	background-image: url(images/mia-insurance-group-logo.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 73px 56px;
+	width: 73px;
+	height: 56px;
+	position: absolute;
+	left: 0px;
+	top: 32px
+}
+
+header h1,
+#phone{
+	color: black;
+	font-size: 36px;
+	line-height: 130px;
+	font-weight: 400;
+}
+
+header h2{
+	margin-top: 110px;
+	font-size: 98px;
+	line-height: 100px;
+	letter-spacing: -1.75px;
+	text-transform: uppercase;
+	max-width: 620px;
+	font-weight: 700;
+}
+
+header ul{
+	font-size: 21px;
+	position: absolute;
+	top: 165px;
+}
+header li{
+	display: inline-block;
+}
+header li:after{
+	content: ' /';
+	margin: 0px 4px;
+}
+header li:last-child:after{
+	content: '';
+}
+#phone{
+	position: absolute;
+	top: 0px;
+	right: 20px;
+}
+#language{
+	color: rgb(255, 119, 5);
+	font-size: 12px;
+	line-height: 20px;
+	font-weight: 700;
+	position: absolute;
+	top: 15px;
+	right: 20px;
+	border-bottom: 1px solid white;
+	z-index: 10;
+}
+#language:hover{
+	border-bottom: 1px solid rgb(255, 119, 5);
+	cursor: pointer;
+}
+header img{
+	position: absolute;
+	right: -60px;
+	bottom: -86px
+}
+figure{
+	position: absolute;
+	bottom: 0px;
+	right: 20px;
+	left: 20px;
+}
+figcaption{
+	font-size: 12px;
+	line-height: 50px;
+	bottom: 0px;
+	left: 0px;
+}
+
+/* Main */
+
+main{
+	position: relative;
+	max-width: 1100px;
+	padding-right: 20px;
+	margin: 56px auto;
+	width: 100%;
+}
+
+main section{
+	width: 55%;
+	padding-top: 30px;
+	border-top: 1px solid #7cbfc0;
+	margin-left: auto;
+	margin-bottom: 52px;
+}
+main section:first-of-type{
+	border-top: 0px;
+	padding-top: 0px;
+}
+main section p{
+	max-width: 430px;
+}
+
+main h3{
+	font-size: 36px;
+	line-height: 43px;
+	font-weight: normal;
+	margin-bottom: 42px;
+	max-width: 550px;
+}
+main a:link{
+	font-weight: 600;
+}
+main a:hover{
+	color:  rgb(255, 119, 5);
+}
+
+#about{
+	position: relative;
+}
+
+#about img{
+	position: absolute;
+	width: 308px;
+	height: auto;
+	top: 10px;
+	left: -78%;
+}
+
+#about aside{
+	font-weight: 400;
+	font-style: italic;
+	position: absolute;
+	width: 308px;
+	top: 358px;
+	left: -78%;
+	text-indent: -5px;
+}
+#about aside p{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	opacity: 0.0;
+	transition: all .75s linear;
+}
+#about aside p.active{
+	opacity: 1.0;
+}
+#about aside span{
+	color: #7cbfc0;
+	font-weight: normal;
+	margin-top: 20px;
+	display: block;
+}
+
+#providers li{
+	position: relative;
+	line-height: 60px;
+	margin-bottom: 20px;
+	margin-left: 80px;
+}
+
+#providers img{
+	position: absolute;
+	left: -80px;
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+}
+
+/* Form */
+
+#cq_form{
+	max-width: 370px;
+	width: 34%;
+	background-color: #2d3a61;;
+	color: white;
+	position: absolute;
+	left: 20px;
+	top: -118px;
+	padding: 25px;
+}
+#cq_form input,
+#cq_form select{
+	display: block;
+	width: 100%;
+	height: 40px;
+	margin-bottom: 20px;
+	padding: 0px 10px;
+	font-size: 16px;
+	border-radius: 3px;
+}
+#cq_form h2{
+	font-size: 36px;
+	line-height: 40px;
+	margin-bottom: 30px;
+	text-align: left;
+	font-weight: 400;
+}
+#cq_form p{
+	font-weight: bold;
+	color: orange;
+}
+.submit_button {
+	text-transform: uppercase;
+	background: #7cbfc0;
+	color: white;
+	border-style: none;
+	height: 50px;
+	width: 100px;
+	font: bold 15px arial, sans-serif;
+	text-shadow:none;
+	margin-top: 40px;
+}
+.submit_button:hover{
+	background-color: rgb(255, 119, 5);
+	pointer: cursor;
+}
+
+.custom-dropdown__select{
+	font-size: inherit; /* inherit size from .custom-dropdown */
+	padding: .5em; /* add some space*/
+	margin: 0; /* remove default margins */
+}
+
+.custom-dropdown__select--white {
+	background-color: #fff;
+	color: #444;    
+}
+
+@supports (pointer-events: none) and
+	  ((-webkit-appearance: none) or
+	  (-moz-appearance: none) or
+	  (appearance: none)) {
+
+	.custom-dropdown {
+		width: 100%;		
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.custom-dropdown__select {
+		padding-right: 2.5em; /* accommodate with the pseudo elements for the dropdown arrow */
+		border: 0;
+		border-radius: 3px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;    
+	}
+
+	.custom-dropdown::before,
+	.custom-dropdown::after {
+		content: "";
+		position: absolute;
+		pointer-events: none;
+	}
+
+	.custom-dropdown::after { /*  Custom dropdown arrow */
+		content: "\25BC";
+		height: 20px;
+		font-size: .625em;
+		right: 10px;
+		top: 12.5%;
+	}
+
+	.custom-dropdown::before { /*  Custom dropdown arrow cover */
+		width: 2em;
+		height: 40px;		
+		right: 0; top: 0; bottom: 0;
+		border-radius: 0 3px 3px 0;
+	}
+
+	.custom-dropdown__select[disabled] {
+		color: rgba(0,0,0,.3);
+	}
+
+	.custom-dropdown.custom-dropdown--disabled::after {
+		color: rgba(0,0,0,.1);
+	}
+
+	/* White dropdown style */
+	.custom-dropdown--white::before {
+		background-color: #fff;
+		border-left: 1px solid rgba(0,0,0,.1);
+	}
+
+	.custom-dropdown--white::after {
+		color: #2d3a61;
+	}
+
+	/* FF only temp fix */
+	@-moz-document url-prefix() {
+		.custom-dropdown__select 			 { padding-right: .9em }
+		.custom-dropdown--large .custom-dropdown__select { padding-right: 1.3em }
+		.custom-dropdown--small .custom-dropdown__select { padding-right: .5em }
+	}
+}
+
+/* Footer */
+
+footer{
+	color: white;
+	position: relative;
+	width: 100%;
+	height: 216px;
+	box-sizing: border-box;
+}
+footer:after{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	content: '';
+	width: 100vw;
+	background: #7cbfc0;
+	display: block;
+	z-index: -1;
+}
+footer > span{
+	display: block;
+	max-width: 1100px;
+	margin: 0px auto;
+	padding: 20px 0px 0px 0px;
+	position: relative;
+	font-weight: 400;
+}
+footer a:link{
+	color: white;
+}
+footer a:hover{
+	color: black;
+}
+address, #social, footer h4, #copyright{
+	padding-left: 45%;
+	padding-right: 20px;
+}
+address{
+	display: table;
+	font-style: normal;
+	width: 100%;
+	margin-top: 20px;
+}
+#contact{
+	display: table-footer-group;
+	float: right;
+}
+#contact span,
+#office span{
+	width: 70px;
+	display: inline-block;
+	font-weight: 600;
+}
+#office{
+	display: inline-block;
+}
+#office > span{
+	display: none;
+}
+#map{
+	position: absolute;
+	left: 20px;
+	top: 25px;
+}
+footer .row{
+	display: inline-block;
+}
+#social{
+	position: absolute;
+	top: 20px;
+	right: 0px;
+}
+#social span{
+	display: none;
+}
+#social li{
+	display: inline-block;
+}
+#copyright{
+	font-size: 12px;
+	margin-top: 18px;
+}
+
+
+@media only screen and (max-width: 900px) {
+	body{
+		background-color: white;
+		font-size: 16px;
+		line-height: 22px;
+	}
+	header ul,
+	figcaption{
+		display: none;
+	}
+	header,
+	header span{
+		height: 310px;
+	}
+	header:before{
+		top: 55px;
+	}
+	header h1{
+		font-size: 20px;
+		line-height: 60px;
+		padding-left: 40px;
+	}
+	header h1:before{
+		background-size: 30px auto;
+		width: 30px;	
+		top: 0px;
+	}
+	header h2{
+		margin-top: 0px;
+		font-size: 37px;
+		line-height: 37px;
+		margin: 4vw 0px 6vw 0px;
+	}
+	header h2{
+		max-width: 50vw;
+	}	
+	header img{
+		width: 225px;
+		right: 10vw;
+		bottom: -45px;
+	}
+	main{
+		margin: 22px 0px;
+	}
+	main section{
+		width: calc(100vw - 40px);
+		margin: 22px 20px 0px 20px;
+		margin-left: 20px;
+	}
+	main h3{
+		font-size: 24px;
+		line-height: 31px;
+		margin-bottom: 25px;
+	}
+	main p{
+		line-height: 25px;
+	}
+	#cq_form{
+		width: 100%;
+		max-width: 100%;
+		position: relative;
+		left: 0px;
+		top: 0px;
+		padding: 15px;
+		margin-bottom: 40px;	
+	}
+	#cq_form h2{
+		font-size: 24px;
+		line-height: 31px;
+		margin-bottom: 30px;
+		margin-top: 10px;
+		font-weight: 100;
+	}
+	#about img,
+	#about aside{
+		position: relative;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+	}
+	#about aside{
+		margin-top: 40px;
+		border-top: 1px solid #7cbfc0;
+		width: calc(100vw - 40px);
+		margin-left: auto;
+		margin-right: auto;
+		padding: 30px 5px;
+		font-weight: 400;
+		font-style: italic;
+		text-indent: -5px;
+		height: 280px;
+	}
+	#about aside p{
+		top: 20px;
+		right: initial;
+		left: 0px;
+		padding: 0px 20px 0px 15px;
+	}
+	#about img{
+		margin-bottom: 20px;
+		margin-top: 15px;
+	}
+	#phone,
+	#language{
+		color: white;
+		position: relative;
+		right: initial;
+		display: block;
+	}
+	#language{
+		top: initial;
+		border-bottom: 0px;
+		font-size: inherit;
+		font-weight: normal;
+	}
+	#language:hover{
+		border-bottom: 0px;
+	}
+	#phone{
+		font-size: 25px;
+		line-height: 36px;
+	}
+	#providers li{
+		position: relative;
+		line-height: 22px;
+		margin-bottom: 40px;
+		margin-left: 80px;
+		z-index: 100;
+		height: 50px;
+	}
+	
+	
+	footer{
+		height: auto;
+		padding: 20px;
+	}
+	footer > span{
+		padding: 0px;
+	}
+	footer .row{
+		display: block;
+	}
+	address, #social, footer h4, #copyright{
+		padding: 0px;
+	}
+	#contact span, #office span{
+		display: inline-block;
+		font-weight: 400;
+	}
+	#contact span{
+		margin-bottom: 5px;
+	}
+	#contact{
+		display: block;
+		float: none;
+	}
+	#map{
+		margin-top: 30px;
+		left: 0px;
+		top: 0px;
+		position: relative;
+	}
+	#map > iframe{
+		width: calc(100vw - 40px);
+		margin: 0px auto;
+	}
+	#social{
+		top: 0px;
+	}
+	#copyright{
+		text-align: right;
+	}
+}
+@media only screen and (max-width: 550px) {
+	header h1, #phone{
+		font-weight: 400;
+	}
+	header img{
+		right: -90px;
+	}
+	#about{
+		margin: 0px;
+		width: 100vw;
+		border-top: 0px;
+	}
+	#about h3, #about p{
+		padding: 0px 20px;
+	}
+}
+@media only screen and (max-width: 370px) {
+	header img{
+		right: -110px;
+	}
+	header h1{
+		font-size: 16px;
+	}
+	footer{
+		font-size: 14px;
+	}
+	footer h4{
+		font-size: 18px;
+	}
+	#contact span,
+	#office span{
+		width: 60px;
+	}
+}
