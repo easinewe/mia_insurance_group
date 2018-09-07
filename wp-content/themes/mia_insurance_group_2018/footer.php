@@ -22,7 +22,7 @@
 			</div>
 			<div id="office" class="row">
 				<span>Office</span> 	9600 NW 25 Street<br/>
-				<span></span>			Suite 4A<br/>
+				<span></span>			Suite #4A<br/>
 				<span></span>			Doral, FL 33172
 			</div>
 			<div id="map" class="row">
