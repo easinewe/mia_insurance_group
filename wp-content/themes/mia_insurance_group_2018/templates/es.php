@@ -1,3 +1,12 @@
+<?php
+/**
+ * Template Name: Espanol
+ *
+ * @package WordPress
+ * @subpackage Founders
+ */
+?>
+
 <?php get_header(); ?>
 
 <?php get_template_part('template-parts/content-mia');?>

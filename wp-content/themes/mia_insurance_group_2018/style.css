@@ -129,7 +129,7 @@ header h2{
 	line-height: 100px;
 	letter-spacing: -1.75px;
 	text-transform: uppercase;
-	max-width: 620px;
+	max-width: 820px;
 	font-weight: 700;
 }
 
@@ -287,7 +287,8 @@ main a:hover{
 	color: white;
 	position: absolute;
 	left: 20px;
-	top: -118px;
+	/*top: -118px;*/
+	top: -25px;
 	padding: 25px;
 }
 #cq_form input,

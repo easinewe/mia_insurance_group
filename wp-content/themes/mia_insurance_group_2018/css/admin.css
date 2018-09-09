@@ -1,0 +1,10 @@
+.w50{
+	width: 40%;
+	margin-right: 2%;
+	box-sizing: border-box;
+	display: inline-block;
+}
+.field_number{
+	font-weight: 600;
+	padding-right: 2%;
+}

@@ -24,6 +24,12 @@
 		global $response;
 		$home_url = home_url( $wp->request );
 	?>
+	<?php 
+		//what language are we speaking	
+		global $ins_language;	
+		$current_template_slug = get_page_template_slug( get_the_id() );
+		$ins_language = ($current_template_slug == 'templates/es.php' )?'spanish':'english';
+	?>
 	
 </head>
 
@@ -31,8 +37,8 @@
 	
 	<header>
 		<span>
-			<h1><?php echo get_bloginfo('name'); ?></h1>
-			<h2><?php echo get_bloginfo('description'); ?></h2>
+			<h1><a href="/"><?php echo get_bloginfo('name'); ?></a></h1>
+			<h2><?php echo ($ins_language == 'spanish')? 'Seguro a Medida de sus Necesidades':get_bloginfo('description'); ?></h2>
 			<ul>
 				<li>Home</li>
 				<li>Condo</li>
@@ -40,7 +46,13 @@
 				<li>Auto</li>
 				<li>General Liability</li>
 			</ul>
-			<a href="http://www.nytimes.com" id="language">Hablamos Espa&ntilde;ol!</a>
+			<?php 
+			if($ins_language == 'spanish'){
+				echo '<a href="/" id="language">View this page in English</a>';
+			}else{
+				echo '<a href="/es/" id="language">Hablamos Espa&ntilde;ol!</a>';
+			}
+			?>
 			<a href="tel:305-671-3589" id="phone" >305-671-3589</a>
 			<figure>
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/ciaran-fitzmaurice-mia-insurance-group-miami-florida.png" alt="Ciaran Fitzmaurice">

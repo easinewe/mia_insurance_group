@@ -21,6 +21,27 @@ function twentysixteen_scripts() {
 
 }
 
+// Enqueue
+function INS_adminEnqueue(){
+
+	// set the variables
+	global $version;
+	global $timers;
+	$timer = microtime(true) - .001;
+	
+	// Load media upload files
+    wp_enqueue_media();
+    
+	// Load our main stylesheet.
+  	wp_enqueue_style('admin-styles', get_template_directory_uri().'/css/admin.css');
+	
+	
+	// calculate time
+	$timer = microtime(true) - $timer;
+	$timers['Admin Enqueue'][] = $timer;
+}
+
+
 
 
 /*------ADDED BY ME---------*/
@@ -55,6 +76,7 @@ function INS_create_post_type() {
       'public' 				=> true,
       'has_archive' 		=> true,
 	  'menu_icon' 			=> 'dashicons-format-quote',
+	  'taxonomies'  		=> array( 'category' ),
     )
   );
 
@@ -72,6 +94,13 @@ function INS_create_post_type() {
   );
 }
 
+//theme support
+function INS_theme_setup() {
+
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'title-tag' );
+	
+}
 
 // Define Meta Box: customer info
 function DEVONA_metabox_customerInfo( $post ) {
@@ -129,12 +158,104 @@ function INS_addMetaBoxes(){
 	global $timers;
 	$timer = microtime(true) - .001;
 	
-	add_meta_box( 'staff_info_box',				'Customer Info',					'DEVONA_metabox_customerInfo',		'customer',			'normal',	'high' );
+	add_meta_box( 'customer_info_box',				'Customer Submitted Info',			'DEVONA_metabox_customerInfo',					'customer',			'normal',	'high' );
+	add_meta_box( 'customer_additional_info_box',	'Additional Customer Info',			'DEVONA_metabox_additional_customerInfo',		'customer',			'normal',	'high' );
 	
 	// calculate time
 	$timer = microtime(true) - $timer;
 	$timers['Add Meta Boxes'][] = $timer;
 }
+
+// Define Meta Box: customer info
+function DEVONA_metabox_additional_customerInfo( $post ) {
+
+	// set the variables
+	global $timers;
+	$timer = microtime(true) - .001;
+
+	// set nonce
+	wp_nonce_field( plugin_basename( __FILE__ ), 'customer_additional_info_nonce' );
+	
+	// set the variables
+	$home_address 		= 	get_post_meta( $post->ID, 'customer_home_address', 		true );
+	$business_address 	= 	get_post_meta( $post->ID, 'customer_biz_address', 		true );
+	$occupied_by 		= 	get_post_meta( $post->ID, 'customer_home_occupied_by', 	true );
+	$occupation 		= 	get_post_meta( $post->ID, 'customer_occupation', 		true );
+	$married 			= 	get_post_meta( $post->ID, 'customer_married', 			true );	
+	$rent_own 			= 	get_post_meta( $post->ID, 'customer_home_ownership', 	true );
+	$current_ins 		= 	get_post_meta( $post->ID, 'customer_current_ins', 		true );
+	$car_vin 			= 	get_post_meta( $post->ID, 'customer_auto_vin', 			true );
+	$car_make 			= 	get_post_meta( $post->ID, 'customer_auto_make', 		true );
+	$car_model 			= 	get_post_meta( $post->ID, 'customer_auto_model', 		true );
+	$car_year 			= 	get_post_meta( $post->ID, 'customer_auto_year', 		true );
+	$car_owernship 		= 	get_post_meta( $post->ID, 'customer_auto_ownership', 	true );
+	$dl_numbers 		= 	get_post_meta( $post->ID, 'customer_dl_number', 		true );
+	$dl_dobs			= 	get_post_meta( $post->ID, 'customer_dl_dob', 			true );
+
+	
+	// create the input
+	echo '<label for="staff"></label>';
+	
+	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Home Address</p>';
+	echo '<input type="textarea" style="width:100%" id="customer_home_address" name="customer_home_address" placeholder="" value="'.$home_address.'"/><br/>';
+	
+	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Business Address</label></p>';
+	echo '<input type="textarea" style="width:100%" id="customer_biz_address" name="customer_biz_address" placeholder="" value="'.$business_address.'"/><br/>';
+	
+	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Occupation</label></p>';
+	echo '<input type="textarea" style="width:50%" id="customer_occupation" name="customer_occupation" placeholder="" value="'.$occupation.'"/><br/>';
+	
+	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Marital Status</label></p>';
+	echo '<input type="textarea" style="width:50%" id="customer_married" name="customer_married" placeholder="" value="'.$married.'"/><br/>';
+	
+	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Current Insurance Company</label></p>';
+	echo '<input type="textarea" style="width:50%" id="customer_current_ins" name="customer_current_ins" placeholder="" value="'.$current_ins.'"/><br/><br/>';
+
+	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Home Occupied By</label></p>';
+	echo '<input type="textarea" style="width:50%" id="customer_home_occupied_by" name="customer_home_occupied_by" placeholder="" value="'.$occupied_by.'"/><br/>';
+
+	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Home Ownership</label></p>';
+	echo "<select id='customer_home_ownership' name='customer_home_ownership'>";
+		echo '<option value="rent" '.( ( $rent_own == 'rent' )? 'selected': '' ).'>Rented</option>';
+		echo '<option value="owned" '.( ( $rent_own == 'owned' )? 'selected': '' ).'>Owned</option>';
+	echo '</select><br/><br/>';   
+
+	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Auto Ownership</label></p>';
+	echo "<select id='customer_auto_ownership' name='customer_auto_ownership'>";
+		echo '<option value="na" '.		( ( $car_owernship == 'na' )? 		'selected': '' ).'>n/a</option>';
+		echo '<option value="leased" '.	( ( $car_owernship == 'lease' )? 	'selected': '' ).'>leased</option>';
+		echo '<option value="loan" '.	( ( $car_owernship == 'loan' )? 	'selected': '' ).'>loan</option>';
+	echo '</select><br/>';   
+
+	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Auto Specs</label></p>';
+	echo '<input type="textarea" class="w50" id="customer_auto_vin" name="customer_auto_vin" placeholder="VIN" value="'.$car_vin.'"/>';
+	echo '<input type="textarea" class="w50" id="customer_auto_year" name="customer_auto_year" placeholder="Year" value="'.$car_year.'"/><br/><br/>';
+	echo '<input type="textarea" class="w50" id="customer_auto_make" name="customer_auto_make" placeholder="Make" value="'.$car_make.'"/>';
+	echo '<input type="textarea" class="w50" id="customer_auto_model" name="customer_auto_model" placeholder="Model" value="'.$car_model.'"/><br/><br/>';
+	
+	
+	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Drivers: click Update to add more Drivers</label></p>';
+	$driver_no = 1;
+	$dob_no = 0;
+	foreach( $dl_numbers as $dl_num ){
+		if ( $dl_num != "" ){
+			echo '<span class="field_number">'.$driver_no.'</span>';
+			echo '<input type="textarea" class="w50" id="customer_dl_number-{'.$driver_no.'}" name="customer_dl_number[]" placeholder="driver license number" value="'.$dl_num.'"/>';
+			echo '<input type="textarea" class="w50" id="customer_dl_dob-{'.$driver_no.'}" name="customer_dl_dob[]" placeholder="driver dob" value="'.$dl_dobs[$dob_no].'"/><br/><br/>';
+		}
+		$driver_no ++;
+		$dob_no ++;
+	}
+	
+	echo '<span class="field_number">'.$driver_no.'</span>';
+	echo '<input type="textarea" class="w50" id="customer_dl_number-{'.$driver_no.'}" name="customer_dl_number[]" placeholder="driver license number" value=""/>';
+	echo '<input type="textarea" class="w50" id="customer_dl_dob-{'.$driver_no.'}" name="customer_dl_dob[]" placeholder="driver dob" value=""/><br/><br/>';
+	
+	// calculate time
+	$timer = microtime(true) - $timer;
+	$timers['Meta Box']['Customer Additional Info'][] = $timer;
+}
+
 
 // Save post meta
 function INS_savePost( $post_id ){
@@ -153,11 +274,17 @@ function INS_savePost( $post_id ){
 	$updates = array();
 	$verifications = array(
 
-		// staff info box
+		// customer info box
 		array(
 			"nonce" => ( isset( $_POST[ 'customer_info_nonce' ] ) )? $_POST[ 'customer_info_nonce' ]: false,
 			"type" => 'default',
 			"fields" => array( 'customer_first_name', 'customer_last_name', 'customer_insurance_type', 'customer_email_address', 'customer_phone' )
+		),
+		// additional customer info box
+		array(
+			"nonce" => ( isset( $_POST[ 'customer_additional_info_nonce' ] ) )? $_POST[ 'customer_additional_info_nonce' ]: false,
+			"type" => 'default',
+			"fields" => array('customer_home_address', 'customer_biz_address', 'customer_home_occupied_by', 'customer_occupation','customer_married','customer_home_ownership', 'customer_current_ins', 'customer_auto_vin', 'customer_auto_make', 'customer_auto_model', 'customer_auto_year', 'customer_auto_ownership', 'customer_dl_number','customer_dl_dob')
 		)
 		
 	);
@@ -192,10 +319,13 @@ function INS_savePost( $post_id ){
 function DEVONA_get_touts(){
 	
     $output = array();
+	$current_template_slug = get_page_template_slug( get_the_id() );
 
 	$args = array(
         'post_type' => 'tout',
         'post_status' => 'publish',
+		'category_name' => ($current_template_slug == 'templates/es.php')?'spanish':'',
+		//'category_name' => $ins_language,
 		'orderby' => 'date',
 		'order' => 'ASC',
 		'posts_per_page' => -1
@@ -224,18 +354,25 @@ function DEVONA_get_touts(){
 
 
 //get page information
-function INS_getPage($page_id){
+function INS_getPage($page_id,$page_id_esp){
+	
+	//which template are we on
+	$current_template_slug = get_page_template_slug( get_the_id() );
+	
+	//get correct id
+	$id = ($current_template_slug == 'templates/es.php' )?$page_id_esp:$page_id;
 	
 	//create empty object
 	$output = new stdClass();
 	
 	//get post data
-	$post = get_post($page_id); 
+	$post = get_post($id); 
 
 	//add post data to object
-	$output->featured_image = get_the_post_thumbnail($page_id,'full');
+	$output->featured_image = get_the_post_thumbnail($id,'full');
 	$output->title = $post->post_title;
 	$output->content = apply_filters('the_content', $post->post_content);
+
 	
 	return $output;
 	
@@ -423,8 +560,10 @@ function INS_adminInit() {
 
 //HOOKS//
 add_action( 'add_meta_boxes', 				'INS_addMetaBoxes' );
+add_action( 'admin_enqueue_scripts', 		'INS_adminEnqueue' );
 add_action( 'admin_init', 					'INS_adminInit');
 add_action( 'admin_menu', 					'INS_custom_menu_page_removing' );
+add_action( 'after_setup_theme', 			'INS_theme_setup' );
 add_action( 'init', 						'INS_start_session' );
 add_action( 'init', 						'INS_customer_validate_info' );
 add_action( 'init', 						'INS_create_post_type' );
