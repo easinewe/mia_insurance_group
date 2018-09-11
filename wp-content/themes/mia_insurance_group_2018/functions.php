@@ -423,9 +423,9 @@ function INS_does_email_exist($email){
 	 );
 	
 	 $email_query = new WP_Query( $args );
-	 
+
 	//does the email exist in the database
-	if( !empty($email_query->have_posts()) ) {
+	if( !($email_query->have_posts()) ) {
 	   return true;
 	 }else{
 	   return false;
