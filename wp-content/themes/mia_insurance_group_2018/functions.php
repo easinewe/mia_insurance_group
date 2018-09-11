@@ -426,14 +426,14 @@ function INS_does_email_exist($email){
 	 
 	//does the email exist in the database
 	if( !empty($email_query->have_posts()) ) {
-	   $output = true;
+	   return true;
 	 }else{
-	   $output = false;
+	   return false;
 	 }
 		
 	wp_reset_postdata(); 
 	
-	return $output;
+	//return $output;
 }
 
 //validate user info 
