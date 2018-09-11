@@ -38,7 +38,7 @@
 	
 	<header>
 		<span>
-			<h1><a href="/"><?php echo get_bloginfo('name'); ?></a></h1>
+			<h1><a href="<?php echo get_site_url(); ?>"><?php echo get_bloginfo('name'); ?></a></h1>
 			<h2><?php echo ($ins_language == 'spanish')? 'Seguro a Medida de sus Necesidades':get_bloginfo('description'); ?></h2>
 			<ul>
 				<li>Home</li>
@@ -49,9 +49,9 @@
 			</ul>
 			<?php 
 			if($ins_language == 'spanish'){
-				echo '<a href="/" id="language">View this page in English</a>';
+				echo '<a href="'.get_site_url().'/" id="language">View this page in English</a>';
 			}else{
-				echo '<a href="/es/" id="language">Hablamos Espa&ntilde;ol!</a>';
+				echo '<a href="'.get_site_url().'/es/" id="language">Hablamos Espa&ntilde;ol!</a>';
 			}
 			?>
 			<a href="tel:305-671-3589" id="phone" >305-671-3589</a>
