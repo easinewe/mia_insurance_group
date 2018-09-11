@@ -569,6 +569,8 @@ function INS_adminInit() {
  	register_setting( 'general', 'DEVONA_company_email' );
  	register_setting( 'general', 'DEVONA_company_address' );
 	add_settings_field(	'business_info_unique', 'Business Info', 'INS_addContactFields', 'general', 'default' );
+ 	register_setting( 'general', 'INS_company_facebook' );
+ 	register_setting( 'general', 'INS_company_instagram' );
 	add_settings_field(	'social_info_unique', 'Social Media', 'INS_addSocialMediaFields', 'general', 'default' );
 }
 
