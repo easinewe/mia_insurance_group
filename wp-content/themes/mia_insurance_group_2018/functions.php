@@ -403,6 +403,20 @@ function INS_addContactFields(){
 
 }
 
+//Add Social Media Fields
+function INS_addSocialMediaFields(){
+	
+	//instagram
+	echo '<label for="company_instagram">Instagram</label><br />';
+	echo '<input type="text" class="regular-text code" value="'.get_option('INS_company_instagram').'" id="company_instagram" name="INS_company_instagram"><br /><br />';
+	
+	//facebook
+	echo '<label for="company_fb">Facebook</label><br />';
+	echo '<input type="text" class="regular-text code" value="'.get_option('INS_company_facebook').'" id="company_facebook" name="INS_company_facebook"><br /><br />';
+	
+}
+
+
 //check if the user email address already exists
 function INS_does_email_exist($email){
 	
@@ -555,7 +569,7 @@ function INS_adminInit() {
  	register_setting( 'general', 'DEVONA_company_email' );
  	register_setting( 'general', 'DEVONA_company_address' );
 	add_settings_field(	'business_info_unique', 'Business Info', 'INS_addContactFields', 'general', 'default' );
-	
+	add_settings_field(	'social_info_unique', 'Social Media', 'INS_addSocialMediaFields', 'general', 'default' );
 }
 
 

@@ -31,8 +31,8 @@
 		</address>
 		<section id="social">
 			<ul>
-				<li id="social_fb"><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/facebook.svg"><span>Facebook</span></a></li>
-				<li id="social_insta"><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/instagram.svg"><span>Instagram</span></a></li>
+				<li id="social_fb"><a href="<?php echo get_option('INS_company_facebook'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/facebook.svg"><span>Facebook</span></a></li>
+				<li id="social_insta"><a href="<?php echo get_option('INS_company_instagram'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/instagram.svg"><span>Instagram</span></a></li>
 			</ul>	
 		</section>	
 		<div id="copyright">© 2009 – 2018 MIA Insurance Group</div>
