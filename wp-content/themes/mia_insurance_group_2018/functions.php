@@ -324,7 +324,7 @@ function DEVONA_get_touts(){
 	$args = array(
         'post_type' => 'tout',
         'post_status' => 'publish',
-		'category_name' => ($current_template_slug == 'templates/es.php')?'spanish':'',
+		'category_name' => ($current_template_slug == 'templates/es.php')?'spanish':'english',
 		//'category_name' => $ins_language,
 		'orderby' => 'date',
 		'order' => 'ASC',
