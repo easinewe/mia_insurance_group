@@ -9,7 +9,7 @@
 		
 		<section id="insurance_quote">
 			<div id="cq_form">
-				<h2>Get a Free Custom Quote Today.</h2>	
+				<h2><?php INS_translate('Get a Free Custom Quote Today.','Obtenga una cotización personalizada gratuita hoy')?></h2>	
 				<?php 
 					if($_SESSION['response']){
 						echo '<p>'.$_SESSION['response'].'</p>';
@@ -26,8 +26,8 @@
 							<option value="general"		<?php echo ($_POST['insurance_type'] == 'general')?'selected':''; ?>>General Liability</option>
 						</select>
 					</span>
-					<input type="text" 	value="<?php echo esc_attr($_POST['fname']); ?>" name="fname" placeholder="First Name">
-					<input type="text" 	value="<?php echo esc_attr($_POST['lname']); ?>" name="lname" placeholder="Last Name">
+					<input type="text" 	value="<?php echo esc_attr($_POST['fname']); ?>" name="fname" placeholder="<?php INS_translate('First Name','Primero Nombre'); ?>">
+					<input type="text" 	value="<?php echo esc_attr($_POST['lname']); ?>" name="lname" placeholder="<?php INS_translate('Last Name','Nombre Segundo'); ?>">
 					<input type="tel"  	value="<?php echo esc_attr($_POST['phone']); ?>" name="phone" placeholder="Phone Number">
 					<input type="email" value="<?php echo esc_attr($_POST['email']); ?>" name="email" placeholder="Email Address">
 					<input type="hidden" name="submitted" value="1">

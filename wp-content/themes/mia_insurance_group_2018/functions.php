@@ -352,6 +352,9 @@ function DEVONA_get_touts(){
     return $output;
 }
 
+function INS_translate($english,$spanish){
+	echo $english;
+}
 
 //get page information
 function INS_getPage($page_id,$page_id_esp){
@@ -404,7 +407,7 @@ function INS_addContactFields(){
 function INS_does_email_exist($email){
 	
 	//set variables
-	$output ='';
+	$output;
 
 
 	//check if the user email already exists	
