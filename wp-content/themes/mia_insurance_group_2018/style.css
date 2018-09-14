@@ -101,8 +101,14 @@ header span{
 header h1{
 	position: relative;
 	padding-left: 80px;
+	text-indent: -99999em;
+	background-image: url(images/mia_logo_wide.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+	background-size: auto 30px;
+
 }
-header h1:before{
+/*header h1:before{
 	content: '';
 	background-image: url(images/mia-insurance-group-logo.png);
 	background-repeat: no-repeat;
@@ -113,8 +119,7 @@ header h1:before{
 	position: absolute;
 	left: 0px;
 	top: 32px
-}
-
+}*/
 header h1,
 #phone{
 	color: black;
