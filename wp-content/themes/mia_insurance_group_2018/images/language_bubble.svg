@@ -1,0 +1,11 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="32" height="26" viewBox="0 0 32 26">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>language_bubble</title>
+  <path class="cls-1" d="M0,0V26H32V0ZM31,16.67a4,4,0,0,1-4,3.94H10.8L3.44,25,4.7,20.6A4,4,0,0,1,1,16.67V4.94A4,4,0,0,1,5,1H27a4,4,0,0,1,4,3.94Z" transform="translate(0 0)"/>
+</svg>
