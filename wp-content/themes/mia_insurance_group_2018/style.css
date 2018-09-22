@@ -178,7 +178,6 @@ header li:last-child:after{
 	right: 0px;
 }
 #language:hover{
-	color: rgb(255, 119, 5);
 	cursor: pointer;
 }
 #language:hover:after{
@@ -532,6 +531,9 @@ footer .row{
 	
 	header h1, #phone{
 		font-size: 36px;
+		line-height: 125px;
+		font-weight: 600;
+		color: #2d3a61;
 	}
 
 }
@@ -707,7 +709,7 @@ footer .row{
 		margin-top: 15px;
 	}
 	#phone{
-		position: fixed;
+		position: absolute;
 		color: black;
 		right: 10px;
 		font-size: 5vw
@@ -724,10 +726,6 @@ footer .row{
 	}
 	#language:hover{
 		border-bottom: 0px;
-	}
-	#phone{
-		font-size: 25px;
-		line-height: 36px;
 	}
 	#providers ul{
 		margin-left: 0px;
