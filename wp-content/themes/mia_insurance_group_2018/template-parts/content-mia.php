@@ -8,6 +8,14 @@
 		</section>
 		
 		<section id="insurance_quote">
+			
+			<?php
+				$iq = INS_getPage(10,103);
+				echo $iq->featured_image;
+				echo '<h3>'.$iq->title.'</h3>';
+				echo $iq->content;
+			?>
+
 			<div id="cq_form">
 				<h2><?php INS_translate('Get a Free Custom Quote Today.','Obtenga una cotización personalizada gratuita hoy')?></h2>	
 				<?php 
@@ -35,12 +43,6 @@
 				</form>
 			</div>	
 			
-			<?php
-				$iq = INS_getPage(10,103);
-				echo $iq->featured_image;
-				echo '<h3>'.$iq->title.'</h3>';
-				echo $iq->content;
-			?>
 		</section>
 	
 		<section id="about">
