@@ -706,14 +706,17 @@ footer .row{
 		margin-bottom: 20px;
 		margin-top: 15px;
 	}
-	#phone,
+	#phone{
+		position: fixed;
+		color: black;
+		right: 10px;
+		font-size: 5vw
+	}
 	#language{
 		color: white;
 		position: relative;
 		right: initial;
 		display: block;
-	}
-	#language{
 		top: initial;
 		border-bottom: 0px;
 		font-size: inherit;
@@ -763,7 +766,6 @@ footer .row{
 	#providers img{
 		margin: 40px auto;
 	}
-
 	footer{
 		font-size: 14px;
 	}
