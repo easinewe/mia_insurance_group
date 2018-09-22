@@ -25,7 +25,7 @@
 				?>
 				<form action="<?php echo $home_url; ?>" method="post">
 					<span class="custom-dropdown custom-dropdown--white">
-						<select name="insurance_type" class="custom-dropdown__select custom-dropdown__select--white">
+						<select id="insurance_type" name="insurance_type" class="custom-dropdown__select custom-dropdown__select--white">
     						<option value="" disabled 	<?php echo empty($_POST['insurance_type'])?'selected':''; ?>>Select Type of Insurance</option>
 							<option value="home" 		<?php echo ($_POST['insurance_type'] == 'home')?'selected':''; ?>>Home</option>
 							<option value="condo" 		<?php echo ($_POST['insurance_type'] == 'condo')?'selected':''; ?>>Condo</option>
@@ -38,6 +38,18 @@
 					<input type="text" 	value="<?php echo esc_attr($_POST['lname']); ?>" name="lname" placeholder="<?php INS_translate('Last Name','Nombre Segundo'); ?>">
 					<input type="tel"  	value="<?php echo esc_attr($_POST['phone']); ?>" name="phone" placeholder="Phone Number">
 					<input type="email" value="<?php echo esc_attr($_POST['email']); ?>" name="email" placeholder="Email Address">
+					
+					<span class="home_ins_q">
+						<input type="text" 	value="<?php echo esc_attr($_POST['fname']); ?>" name="fname" placeholder="<?php INS_translate('Home Address','Home Address'); ?>">
+						<span class="custom-dropdown custom-dropdown--white">
+						<select name="ownership" class="custom-dropdown__select custom-dropdown__select--white">
+								<option value="" disabled 	<?php echo empty($_POST['ownership'])?'selected':''; ?>>Do you own your home?</option>
+								<option value="owned" 		<?php echo ($_POST['ownership'] == 'owned')?'selected':''; ?>>Owned</option>
+								<option value="rented"		<?php echo ($_POST['ownership'] == 'rented')?'selected':''; ?>>Rent</option>
+						</select>
+						</span>
+					</span>
+						
 					<input type="hidden" name="submitted" value="1">
 					<input class="submit_button" type="submit" value="Submit">
 				</form>
