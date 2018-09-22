@@ -163,7 +163,6 @@ header li:last-child:after{
 	top: 15px;
 	right: 20px;
 	padding-right: 25px;
-	border-bottom: 1px solid white;
 	z-index: 10;
 }
 #language:after{
@@ -194,7 +193,7 @@ header img{
 	right: -60px;
 	bottom: -86px;
 	right: -7.5%;
-	bottom: -13.23%;
+	bottom: -12.9%;
 }
 figure{
 	position: absolute;
@@ -539,7 +538,7 @@ footer .row{
 
 @media only screen and (max-width: 900px) {
 	main{
-		margin: 22px 0px;
+		margin: 55px 0px 22px 0px;
 	}
 	main section{
 		width: calc(100vw - 40px);
@@ -553,12 +552,18 @@ footer .row{
 		line-height: 31px;
 		margin-bottom: 25px;
 	}
-	main p{
+	main p,
+	#providers ul{
 		margin-left: 45%;
 		line-height: 25px;
 	}
+	header ul{
+		display: none;
+	}
+
 	#cq_form{
-		width: 100%;
+		width: 55%;
+		margin-left: 45%;
 		max-width: 100%;
 		position: relative;
 		left: 0px;
@@ -573,8 +578,49 @@ footer .row{
 		margin-top: 10px;
 		font-weight: 100;
 	}
-
-
+	#providers img:first-of-type{
+		margin-top: 0px;	
+	}
+	footer{
+		height: auto;
+		padding: 20px;
+	}
+	footer > span{
+		padding: 0px;
+	}
+	footer .row{
+		display: block;
+	}
+	address, #social, footer h4, #copyright{
+		padding: 0px;
+	}
+	#contact span, #office span{
+		display: inline-block;
+		font-weight: 400;
+	}
+	#contact span{
+		margin-bottom: 5px;
+	}
+	#contact{
+		display: block;
+		float: none;
+	}
+	#map{
+		margin-top: 30px;
+		left: 0px;
+		top: 0px;
+		position: relative;
+	}
+	#map > iframe{
+		width: calc(100vw - 40px);
+		margin: 0px auto;
+	}
+	#social{
+		top: 0px;
+	}
+	#copyright{
+		text-align: right;
+	}
 }
 
 @media only screen and (max-width: 600px) {
@@ -583,8 +629,11 @@ footer .row{
 		font-size: 16px;
 		line-height: 22px;
 	}
-	header ul,
+	
 	figcaption{
+		display: none;
+	}
+	#language:after{
 		display: none;
 	}
 	/*header,
@@ -604,21 +653,30 @@ footer .row{
 		background-size: 30px auto;
 		width: 30px;	
 		top: 0px;
-	}
+	}*/
 	header h2{
-		margin-top: 0px;
-		font-size: 37px;
-		line-height: 37px;
-		margin: 4vw 0px 6vw 0px;
+		margin: 4vw 0px 2vw 0px;
 	}
-	header h2{
-		max-width: 50vw;
-	}	
 	/*header img{
 		width: 225px;
 		right: 10vw;
 		bottom: -45px;
 	}*/
+	
+	main{
+		margin: 22px 0px;
+	}
+	main h3{
+		float: none;
+		max-width: 100%;
+	}
+	main p{
+		margin-left: 0px;
+	}
+	#cq_form{
+		width: 100%;
+		margin-left: 0px;
+	}
 	#about img,
 	#about aside{
 		position: relative;
@@ -668,6 +726,9 @@ footer .row{
 		font-size: 25px;
 		line-height: 36px;
 	}
+	#providers ul{
+		margin-left: 0px;
+	}
 	#providers li{
 		position: relative;
 		line-height: 22px;
@@ -676,46 +737,11 @@ footer .row{
 		z-index: 100;
 		height: auto;
 	}
-	footer{
-		height: auto;
-		padding: 20px;
+	#providers img:first-of-type{
+		margin-top: 40px;	
 	}
-	footer > span{
-		padding: 0px;
-	}
-	footer .row{
-		display: block;
-	}
-	address, #social, footer h4, #copyright{
-		padding: 0px;
-	}
-	#contact span, #office span{
-		display: inline-block;
-		font-weight: 400;
-	}
-	#contact span{
-		margin-bottom: 5px;
-	}
-	#contact{
-		display: block;
-		float: none;
-	}
-	#map{
-		margin-top: 30px;
-		left: 0px;
-		top: 0px;
-		position: relative;
-	}
-	#map > iframe{
-		width: calc(100vw - 40px);
-		margin: 0px auto;
-	}
-	#social{
-		top: 0px;
-	}
-	#copyright{
-		text-align: right;
-	}
+
+
 }
 @media only screen and (max-width: 550px) {
 	header h1, #phone{
@@ -731,9 +757,6 @@ footer .row{
 	}
 }
 @media only screen and (max-width: 370px) {
-	header img{
-		right: -110px;
-	}
 	header h1{
 		font-size: 16px;
 	}
