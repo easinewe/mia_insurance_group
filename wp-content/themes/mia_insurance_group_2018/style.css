@@ -654,7 +654,7 @@ footer .row{
 	
 	header,
 	header > span{
-		height: 60vh;
+		height: 120vw;
 	}
 	header:before{
 		top: 15.5%;
