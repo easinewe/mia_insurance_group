@@ -49,9 +49,9 @@
 			</ul>
 			<?php 
 			if($ins_language == 'spanish'){
-				echo '<a href="'.get_site_url().'/" id="language">Visit English Site</a>';
+				echo '<a href="'.get_site_url().'/" id="language"><span>Visit </span>English<span> Site</span></a>';
 			}else{
-				echo '<a href="'.get_site_url().'/es/" id="language">Visita el Sitio Español</a>';
+				echo '<a href="'.get_site_url().'/es/" id="language"><span>Visita el Sitio </span>Español</a>';
 			}
 			?>
 			<a href="tel:305-671-3589" id="phone" >(305) 671-3589</a>

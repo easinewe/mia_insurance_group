@@ -92,7 +92,7 @@ header:before{
 	display: block;
 	z-index: -1;
 }
-header span{
+header > span{
 	display: block;
 	max-height: 650px;
 	max-width: 1100px;
@@ -641,35 +641,67 @@ footer .row{
 	figcaption{
 		display: none;
 	}
-	#language:after{
-		display: none;
+	header h1, #phone{
+		height: 15%;
 	}
-	/*header,
-	header span{
-		height: 310px;
+	header h2{
+		font-size: 1.25rem;
+		max-width: 100px;
+		line-height: 110%;
+		margin-top: 20px;
+		letter-spacing: 0px;
+	}
+	
+	header,
+	header > span{
+		height: 60vh;
 	}
 	header:before{
-		top: 55px;
+		top: 15.5%;
 	}
-	header h1{
-		font-size: 20px;
-		line-height: 60px;
-		padding-left: 40px;
-		background-size: auto 40px;
+	figure{
+		overflow: hidden;
+		right: 0px;
+		left: 0px;
 	}
-	header h1:before{
-		background-size: 30px auto;
-		width: 30px;	
-		top: 0px;
-	}*/
-	header h2{
-		margin: 4vw 0px 2vw 0px;
+	figure img{
+		position: relative;
+		width: 80vw;
+		right: -14.5%;
 	}
-	/*header img{
-		width: 225px;
-		right: 10vw;
-		bottom: -45px;
-	}*/
+	header ul{
+		display: block;
+		top: initial;
+		position: relative;
+		font-size: 1.125rem;
+		line-height: 1.25rem;
+		margin-top: 10px;
+		z-index: 9999;
+	}
+	header ul li{
+		display: block;
+		line-height: 120%;
+		margin-bottom: 5px;
+		max-width: 30px;
+	}
+	header ul li:after{
+		content: '';
+	}
+	
+	#phone{
+		bottom: 0px;
+		top: initial;
+		position: absolute;
+		background-color: white;
+		color: black;
+		margin-left: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+		right: 0px;
+		height: auto;
+		z-index: 9999;
+	}
+	
 	
 	main{
 		margin: 22px 0px;
@@ -715,20 +747,29 @@ footer .row{
 		margin-top: 15px;
 	}
 	#phone{
+		bottom: 0px;
+		top: initial;
 		position: absolute;
+		background-color: white;
 		color: black;
-		right: 10px;
-		font-size: 5vw
+		margin-left: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+		right: 0px;
+		height: auto;
+		font-size: 5vw;
+		z-index: 9999;
+		line-height: 20px;
+		padding-top: 10px;
 	}
 	#language{
-		color: white;
-		position: relative;
-		right: initial;
-		display: block;
-		top: initial;
-		border-bottom: 0px;
 		font-size: inherit;
 		font-weight: normal;
+		right: 20px;
+		padding-right: 25px;
+	}
+	#language > span{
+		display: none;
 	}
 	#language:hover{
 		border-bottom: 0px;
@@ -747,7 +788,9 @@ footer .row{
 	#providers img:first-of-type{
 		margin-top: 40px;	
 	}
-
+	#providers img{
+		max-width: 85vw;
+	}
 
 }
 @media only screen and (max-width: 550px) {
@@ -766,6 +809,9 @@ footer .row{
 @media only screen and (max-width: 370px) {
 	header h1{
 		font-size: 16px;
+	}
+	figure img{
+		right: -20.5%
 	}
 	#providers img{
 		margin: 40px auto;
