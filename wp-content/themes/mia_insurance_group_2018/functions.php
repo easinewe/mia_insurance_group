@@ -439,7 +439,7 @@ function INS_does_email_exist($email){
 	 $email_query = new WP_Query( $args );
 
 	//does the email exist in the database
-	if( !($email_query->have_posts()) ) {
+	if( $email_query->have_posts() ) {
 	   return true;
 	 }else{
 	   return false;
@@ -447,7 +447,7 @@ function INS_does_email_exist($email){
 		
 	wp_reset_postdata(); 
 	
-	//return $output;
+	//return $email_query->have_posts();
 }
 
 //validate user info 
@@ -472,6 +472,7 @@ function INS_customer_validate_info() {
 	  $last_name 	= isset($_POST['lname'])			?	$_POST['lname']:'';
 	  $phone 		= isset($_POST['phone'])			?	$_POST['phone']:'';
 	  $email		= isset($_POST['email'])			?	$_POST['email']:'';
+	  $address		= isset($_POST['home_address'])		?	$_POST['home_address']:'';	
 	
 	  //is the user already registered	
 	  $already_registered = INS_does_email_exist($email);
@@ -500,14 +501,14 @@ function INS_customer_validate_info() {
 				//ready to go!
 				$_SESSION['status']  = "success";
 				$_SESSION['response']  = $validated;
-				$_SESSION['user_id'] =  DEVONA_create_customer($first_name,$last_name,$email,$phone,$insurance);
+				$_SESSION['user_id'] =  DEVONA_create_customer($first_name,$last_name,$email,$phone,$insurance,$address,$ownership);
 			}  
 		  }
 		}
 	
 	//var_dump($_SESSION);
 	//var_dump($_POST);
-
+	//var_dump($already_registered);
 	
 	// calculate time
 	$timer = microtime(true) - $timer;
@@ -518,7 +519,7 @@ function INS_customer_validate_info() {
 }
 
 // Saving add or update press user
-function DEVONA_create_customer($first_name,$last_name,$email,$phone,$insurance){
+function DEVONA_create_customer($first_name,$last_name,$email,$phone,$insurance,$address,$ownership){
 	
 	// set the variables
 	global $timers;
@@ -538,6 +539,9 @@ function DEVONA_create_customer($first_name,$last_name,$email,$phone,$insurance)
 		   add_post_meta($post_id, 'customer_last_name', 			$last_name);
 		   add_post_meta($post_id, 'customer_phone', 				$phone);
 		   add_post_meta($post_id, 'customer_insurance_type', 		$insurance);
+
+		   add_post_meta($post_id, 'customer_home_address', 		$address);
+		   add_post_meta($post_id, 'customer_home_ownership', 		$ownership);
 
 		   //set the returned id value
 		   $output = $post_id;
@@ -574,6 +578,30 @@ function INS_adminInit() {
 	add_settings_field(	'social_info_unique', 'Social Media', 'INS_addSocialMediaFields', 'general', 'default' );
 }
 
+
+function send_mails_on_publish( $new_status, $old_status, $post )
+{
+    if ( 'publish' !== $new_status or 'publish' === $old_status
+        or 'customer' !== get_post_type( $post ) )
+        return;
+
+    $subscribers = get_users( array ( 'role' => 'subscriber' ) );
+    $emails      = array ();
+
+    foreach ( $subscribers as $subscriber )
+        $emails[] = $subscriber->user_email;
+
+    $body = sprintf( 'Hey there is a new entry!
+        See <%s>',
+        get_permalink( $post )
+    );
+
+    //wp_mail( $emails, 'New entry!', $body );
+
+    wp_mail( 'eamonnfitzmaurice@gmail.com', 'New entry!', $body );
+}
+
+add_action( 'transition_post_status', 'send_mails_on_publish', 10, 3 );
 
 
 

@@ -40,16 +40,17 @@
 					<input type="email" value="<?php echo esc_attr($_POST['email']); ?>" name="email" placeholder="Email Address">
 					
 					<span class="home_ins_q">
-						<input type="text" 	value="<?php echo esc_attr($_POST['fname']); ?>" name="fname" placeholder="<?php INS_translate('Home Address','Home Address'); ?>">
+						<input type="text" 	value="<?php echo esc_attr($_POST['home_address']); ?>" name="home_address" placeholder="<?php INS_translate('Home Address','Home Address'); ?>">
 						<span class="custom-dropdown custom-dropdown--white">
-						<select name="ownership" class="custom-dropdown__select custom-dropdown__select--white">
-								<option value="" disabled 	<?php echo empty($_POST['ownership'])?'selected':''; ?>>Do you own your home?</option>
-								<option value="owned" 		<?php echo ($_POST['ownership'] == 'owned')?'selected':''; ?>>Owned</option>
-								<option value="rented"		<?php echo ($_POST['ownership'] == 'rented')?'selected':''; ?>>Rent</option>
+						<select name="customer_home_ownership" class="custom-dropdown__select custom-dropdown__select--white">
+								<option value="" disabled 	<?php echo empty($_POST['customer_home_ownership'])?'selected':''; ?>>Do you own your home?</option>
+								<option value="owned" 		<?php echo ($_POST['customer_home_ownership'] == 'owned')?'selected':''; ?>>Owned</option>
+								<option value="rent"		<?php echo ($_POST['customer_home_ownership'] == 'rent')?'selected':''; ?>>Rent</option>
 						</select>
 						</span>
 					</span>
 						
+					
 					<input type="hidden" name="submitted" value="1">
 					<input class="submit_button" type="submit" value="Submit">
 				</form>
