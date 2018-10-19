@@ -365,10 +365,12 @@ main a:hover{
 	background-color: #fff;
 	color: #444;    
 }
-.home_ins_q{
+.home_ins_q,
+.auto_ins_q{
 	display: none !important;
 }
-body.home_insurance .home_ins_q{
+body.home_insurance .home_ins_q,
+body.auto_insurance .auto_ins_q{
 	display: block !important;
 }
 

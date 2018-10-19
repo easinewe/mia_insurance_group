@@ -21,6 +21,10 @@
 				<?php 
 					if($_SESSION['response']){
 						echo '<p>'.$_SESSION['response'].'</p>';
+				?>		
+					<!--scroll to the form-->	
+					<script>document.getElementById("cq_form").scrollIntoView();</script>
+				<?php	
 					}
 				?>
 				<form action="<?php echo $home_url; ?>" method="post">
@@ -38,6 +42,10 @@
 					<input type="text" 	value="<?php echo esc_attr($_POST['lname']); ?>" name="lname" placeholder="<?php INS_translate('Last Name','Nombre Segundo'); ?>">
 					<input type="tel"  	value="<?php echo esc_attr($_POST['phone']); ?>" name="phone" placeholder="Phone Number">
 					<input type="email" value="<?php echo esc_attr($_POST['email']); ?>" name="email" placeholder="Email Address">
+					
+					<span class="auto_ins_q">
+						<input type="text" 	value="<?php echo esc_attr($_POST['customer_auto_details']); ?>" name="customer_auto_details" placeholder="<?php INS_translate('Car Make/Model/Year','Car Make/Model/Year'); ?>">
+					</span>
 					
 					<span class="home_ins_q">
 						<input type="text" 	value="<?php echo esc_attr($_POST['home_address']); ?>" name="home_address" placeholder="<?php INS_translate('Home Address','Home Address'); ?>">

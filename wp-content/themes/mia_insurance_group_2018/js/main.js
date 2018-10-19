@@ -32,14 +32,27 @@
 	//did the user select home insurance
 	function INS_add_ownershipClass(){
 		var select_value = form_select.options[form_select.selectedIndex].value;
-		if(select_value == 'home'){
+		if(select_value == 'home' || select_value == 'condo' ){
 		   document.body.classList.add('home_insurance');
 		}else{
 			document.body.classList.remove('home_insurance');
 		}
 	}
 
+	//did the user select auto insurance
+	function INS_add_autoClass(){
+		var select_value = form_select.options[form_select.selectedIndex].value;
+		if(select_value == 'auto'){
+		   document.body.classList.add('auto_insurance');
+		}else{
+			document.body.classList.remove('auto_insurance');
+		}
+	}
+
+
+
 /* BIND ------------------------------------------------------------------------------- */
 
 setInterval(INS_rotate_touts, 7*1000);
 form_select.addEventListener("change", INS_add_ownershipClass);
+form_select.addEventListener("change", INS_add_autoClass);

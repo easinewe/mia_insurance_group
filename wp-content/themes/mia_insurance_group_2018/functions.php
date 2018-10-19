@@ -184,6 +184,7 @@ function DEVONA_metabox_additional_customerInfo( $post ) {
 	$married 			= 	get_post_meta( $post->ID, 'customer_married', 			true );	
 	$rent_own 			= 	get_post_meta( $post->ID, 'customer_home_ownership', 	true );
 	$current_ins 		= 	get_post_meta( $post->ID, 'customer_current_ins', 		true );
+	$car_details 		= 	get_post_meta( $post->ID, 'customer_auto_details', 		true );
 	$car_vin 			= 	get_post_meta( $post->ID, 'customer_auto_vin', 			true );
 	$car_make 			= 	get_post_meta( $post->ID, 'customer_auto_make', 		true );
 	$car_model 			= 	get_post_meta( $post->ID, 'customer_auto_model', 		true );
@@ -228,6 +229,7 @@ function DEVONA_metabox_additional_customerInfo( $post ) {
 	echo '</select><br/>';   
 
 	echo '<p class="post-attributes-label-wrapper"><label class="post-attributes-label">Auto Specs</label></p>';
+	echo '<input type="textarea" style="width:100%" id="customer_auto_details" name="customer_auto_details" placeholder="Auto Details" value="'.$car_details.'"/><br/><br/>';
 	echo '<input type="textarea" class="w50" id="customer_auto_vin" name="customer_auto_vin" placeholder="VIN" value="'.$car_vin.'"/>';
 	echo '<input type="textarea" class="w50" id="customer_auto_year" name="customer_auto_year" placeholder="Year" value="'.$car_year.'"/><br/><br/>';
 	echo '<input type="textarea" class="w50" id="customer_auto_make" name="customer_auto_make" placeholder="Make" value="'.$car_make.'"/>';
@@ -284,7 +286,7 @@ function INS_savePost( $post_id ){
 		array(
 			"nonce" => ( isset( $_POST[ 'customer_additional_info_nonce' ] ) )? $_POST[ 'customer_additional_info_nonce' ]: false,
 			"type" => 'default',
-			"fields" => array('customer_home_address', 'customer_biz_address', 'customer_home_occupied_by', 'customer_occupation','customer_married','customer_home_ownership', 'customer_current_ins', 'customer_auto_vin', 'customer_auto_make', 'customer_auto_model', 'customer_auto_year', 'customer_auto_ownership', 'customer_dl_number','customer_dl_dob')
+			"fields" => array('customer_home_address', 'customer_biz_address', 'customer_home_occupied_by', 'customer_occupation','customer_married','customer_home_ownership', 'customer_current_ins', 'customer_auto_details','customer_auto_vin', 'customer_auto_make', 'customer_auto_model', 'customer_auto_year', 'customer_auto_ownership', 'customer_dl_number','customer_dl_dob')
 		)
 		
 	);
@@ -467,12 +469,15 @@ function INS_customer_validate_info() {
 	  $registered		= "Thanks, you are already a registered MIA customer.";
 
 	  //user posted variables
-	  $insurance	= isset($_POST['insurance_type'])	?	$_POST['insurance_type']:'';
-	  $first_name 	= isset($_POST['fname'])			?	$_POST['fname']:'';
-	  $last_name 	= isset($_POST['lname'])			?	$_POST['lname']:'';
-	  $phone 		= isset($_POST['phone'])			?	$_POST['phone']:'';
-	  $email		= isset($_POST['email'])			?	$_POST['email']:'';
-	  $address		= isset($_POST['home_address'])		?	$_POST['home_address']:'';	
+	  $insurance	= isset($_POST['insurance_type'])			?	$_POST['insurance_type']:'';
+	  $first_name 	= isset($_POST['fname'])					?	$_POST['fname']:'';
+	  $last_name 	= isset($_POST['lname'])					?	$_POST['lname']:'';
+	  $phone 		= isset($_POST['phone'])					?	$_POST['phone']:'';
+	  $email		= isset($_POST['email'])					?	$_POST['email']:'';
+	  $address		= isset($_POST['home_address'])				?	$_POST['home_address']:'';	
+	
+	  $ownership 	= isset($_POST['customer_home_ownership'])	?	$_POST['customer_home_ownership']:'';
+	  $auto_details = isset($_POST['customer_auto_details'])	?	$_POST['customer_auto_details']:'';
 	
 	  //is the user already registered	
 	  $already_registered = INS_does_email_exist($email);
@@ -501,7 +506,7 @@ function INS_customer_validate_info() {
 				//ready to go!
 				$_SESSION['status']  = "success";
 				$_SESSION['response']  = $validated;
-				$_SESSION['user_id'] =  DEVONA_create_customer($first_name,$last_name,$email,$phone,$insurance,$address,$ownership);
+				$_SESSION['user_id'] =  DEVONA_create_customer($first_name,$last_name,$email,$phone,$insurance,$address,$ownership,$auto_details);
 			}  
 		  }
 		}
@@ -519,7 +524,7 @@ function INS_customer_validate_info() {
 }
 
 // Saving add or update press user
-function DEVONA_create_customer($first_name,$last_name,$email,$phone,$insurance,$address,$ownership){
+function DEVONA_create_customer($first_name,$last_name,$email,$phone,$insurance,$address,$ownership,$auto_details){
 	
 	// set the variables
 	global $timers;
@@ -542,6 +547,9 @@ function DEVONA_create_customer($first_name,$last_name,$email,$phone,$insurance,
 
 		   add_post_meta($post_id, 'customer_home_address', 		$address);
 		   add_post_meta($post_id, 'customer_home_ownership', 		$ownership);
+		   
+		   add_post_meta($post_id, 'customer_auto_details', 		$auto_details);
+
 
 		   //set the returned id value
 		   $output = $post_id;
