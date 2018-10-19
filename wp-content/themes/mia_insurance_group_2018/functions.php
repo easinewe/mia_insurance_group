@@ -46,6 +46,19 @@ function INS_adminEnqueue(){
 
 /*------ADDED BY ME---------*/
 
+//add body classes to show correct form informaiton
+function add_body_classes( $classes ) {
+ 
+    if($_POST['insurance_type'] == 'auto'){
+		$classes[] = 'auto_insurance';
+	}else if($_POST['insurance_type'] == 'home'){
+		$classes[] = 'home_insurance';
+	}
+     
+    return $classes;
+}
+
+
 //remove the posts post type
 function INS_custom_menu_page_removing() {
     remove_menu_page( 'edit.php' );
@@ -620,6 +633,7 @@ add_action( 'admin_enqueue_scripts', 		'INS_adminEnqueue' );
 add_action( 'admin_init', 					'INS_adminInit');
 add_action( 'admin_menu', 					'INS_custom_menu_page_removing' );
 add_action( 'after_setup_theme', 			'INS_theme_setup' );
+add_filter( 'body_class',					'add_body_classes' );
 add_action( 'init', 						'INS_start_session' );
 add_action( 'init', 						'INS_customer_validate_info' );
 add_action( 'init', 						'INS_create_post_type' );
