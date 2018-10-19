@@ -56,3 +56,5 @@
 setInterval(INS_rotate_touts, 7*1000);
 form_select.addEventListener("change", INS_add_ownershipClass);
 form_select.addEventListener("change", INS_add_autoClass);
+
+setTimeout(function(){document.body.classList.remove('offscreen')}, 000)

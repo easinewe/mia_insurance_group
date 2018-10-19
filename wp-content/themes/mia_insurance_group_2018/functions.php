@@ -46,6 +46,7 @@ function INS_adminEnqueue(){
 
 /*------ADDED BY ME---------*/
 
+
 //add body classes to show correct form informaiton
 function add_body_classes( $classes ) {
  
@@ -367,8 +368,18 @@ function DEVONA_get_touts(){
     return $output;
 }
 
+//show correct language
 function INS_translate($english,$spanish){
-	echo $english;
+	
+	//determine template
+	$current_template_slug = get_page_template_slug( get_the_id() );
+	$ins_language = ($current_template_slug == 'templates/es.php' )?'spanish':'english';
+
+	if($ins_language == 'spanish'){
+		return $spanish;
+	}else{
+		return $english;
+	}
 }
 
 //get page information
@@ -472,14 +483,15 @@ function INS_customer_validate_info() {
 	global $timers;
 	$timer = microtime(true) - .001;
 	$response = "";
-
+	$language = isset($_POST['user_language'])?$_POST['user_language']:'';
+	
 	  //response messages
-	  $missing_content 	= "Please enter your name!";
-	  $missing_phone	= "Please enter a phone number!";
-	  $email_invalid   	= "Please enter a valid email address.";
-	  $not_validated  	= "The item you are looking for is currently not available. Please try again later.";
-	  $validated    	= "Thanks for submitting. An MIA agent will contact you shortly to discuss options.";
-	  $registered		= "Thanks, you are already a registered MIA customer.";
+	  $missing_content 	= ($language == 'english')?'Please enter your name!':'¡Por favor, escriba su nombre!';
+	  $missing_phone	= ($language == 'english')?'Please enter a phone number!':'¡Por favor, ingrese un número de teléfono!';
+	  $email_invalid   	= ($language == 'english')?'Please enter a valid email address.':'Por favor, introduce una dirección de correo electrónico válida.';
+	  $not_validated  	= ($language == 'english')?'The item you are looking for is currently not available. Please try again later.':'translate';
+	  $validated    	= ($language == 'english')?'Thanks for submitting. An MIA agent will contact you shortly to discuss options.':'Gracias por enviarnos Un agente de MIA se pondrá en contacto con usted en breve para analizar las opciones.';
+	  $registered		= ($language == 'english')?'Thanks, you are already a registered MIA customer.':'Gracias, ya eres un cliente registrado de MIA.';
 
 	  //user posted variables
 	  $insurance	= isset($_POST['insurance_type'])			?	$_POST['insurance_type']:'';

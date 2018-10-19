@@ -34,18 +34,18 @@
 	
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class('offscreen'); ?>>
 	
 	<header>
 		<span>
 			<h1><a href="<?php echo get_site_url(); ?>"><?php echo get_bloginfo('name'); ?></a></h1>
 			<h2><?php echo ($ins_language == 'spanish')? 'Seguro a Medida de sus Necesidades':get_bloginfo('description'); ?></h2>
 			<ul>
-				<li>Home</li>
-				<li>Condo</li>
-				<li>Flood</li>
-				<li>Auto</li>
-				<li>General Liability</li>
+				<li><?php echo INS_translate('Home','Casa'); ?></li>
+				<li><?php echo INS_translate('Condo','Condominio'); ?></li>
+				<li><?php echo INS_translate('Flood','Inundar'); ?>	</li>
+				<li><?php echo INS_translate('Auto','Automóvil'); ?></li>
+				<li><?php echo INS_translate('General Liability','Responsabilidad General'); ?></li>
 			</ul>
 			<?php 
 			if($ins_language == 'spanish'){
