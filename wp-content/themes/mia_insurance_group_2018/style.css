@@ -690,7 +690,8 @@ footer .row{
 	figure img{
 		position: relative;
 		width: 80vw;
-		right: -14.5%;
+		/*right: -14.5%;*/
+		right: -22.5%;
 	}
 	header ul{
 		display: block;
@@ -709,6 +710,7 @@ footer .row{
 	}
 	header ul li:after{
 		content: '';
+		margin: 0px;
 	}
 	
 	#phone{
