@@ -25,6 +25,9 @@ html, body {
 	height: 100%;
 	-webkit-overflow-scrolling: touch;
 }
+html{
+	overflow-x: hidden;
+}
 body {
 	background:#FFF;
 	color: black;
@@ -591,7 +594,9 @@ footer .row{
 	header ul{
 		display: none;
 	}
-
+	#phone{
+		top: 1.2vw;
+	}
 	#cq_form{
 		width: 55%;
 		margin-left: 45%;
@@ -655,6 +660,9 @@ footer .row{
 }
 
 @media only screen and (max-width: 600px) {
+	html{
+		overflow-x: initial;
+	}
 	body{
 		background-color: white;
 		font-size: 16px;
