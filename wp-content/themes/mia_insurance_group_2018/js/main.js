@@ -13,12 +13,12 @@
 			total_touts = INS_touts.length;
 		
 		//get the active tout
-		INS_touts.forEach(function (tout,index) {
-			if(tout.classList.contains('active')){
-				active_tout = index;
+		for (var i = 0; i < INS_touts.length; i++) {
+			if(INS_touts[i].classList.contains('active')){
+				active_tout = i;
 			}
-		});
-		
+		}
+				
 		//remove active
 		INS_touts[active_tout].className= '';
 		
