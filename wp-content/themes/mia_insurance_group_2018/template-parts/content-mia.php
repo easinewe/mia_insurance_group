@@ -48,7 +48,7 @@
 					</span>
 					
 					<span class="home_ins_q">
-						<input type="text" 	value="<?php echo esc_attr($_POST['home_address']); ?>" name="home_address" placeholder="<?php INS_translate('Home Address','Direccion de Casa'); ?>">
+						<input type="text" 	value="<?php echo esc_attr($_POST['home_address']); ?>" name="home_address" placeholder="<?php echo INS_translate('Home Address','Direccion de Casa'); ?>">
 						<span class="custom-dropdown custom-dropdown--white">
 						<select name="customer_home_ownership" class="custom-dropdown__select custom-dropdown__select--white">
 								<option value="" disabled 	<?php echo empty($_POST['customer_home_ownership'])?'selected':''; ?>><?php echo INS_translate('Do you own your home?','Eres dueno de tu casa?'); ?></option>
