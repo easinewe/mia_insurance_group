@@ -43,7 +43,7 @@
 			<ul>
 				<li><?php echo INS_translate('Home','Casa'); ?></li>
 				<li><?php echo INS_translate('Condo','Condominio'); ?></li>
-				<li><?php echo INS_translate('Flood','Inundar'); ?>	</li>
+				<li><?php echo INS_translate('Flood','Inundación'); ?>	</li>
 				<li><?php echo INS_translate('Auto','Automóvil'); ?></li>
 				<li><?php echo INS_translate('General Liability','Responsabilidad General'); ?></li>
 			</ul>

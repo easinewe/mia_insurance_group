@@ -33,13 +33,13 @@
     						<option value="" disabled 	<?php echo empty($_POST['insurance_type'])?'selected':''; ?>><?php echo INS_translate('Select Type of Insurance','Seleccione el tipo de seguro'); ?></option>
 							<option value="home" 		<?php echo ($_POST['insurance_type'] == 'home')?'selected':''; ?>	>	<?php echo INS_translate('Home','Casa'); ?>					</option>
 							<option value="condo" 		<?php echo ($_POST['insurance_type'] == 'condo')?'selected':''; ?>	>	<?php echo INS_translate('Condo','Condominio'); ?>			</option>
-							<option value="flood" 		<?php echo ($_POST['insurance_type'] == 'flood')?'selected':''; ?>	>	<?php echo INS_translate('Flood','Inundar'); ?>				</option>
+							<option value="flood" 		<?php echo ($_POST['insurance_type'] == 'flood')?'selected':''; ?>	>	<?php echo INS_translate('Flood','Inundación'); ?>				</option>
 							<option value="auto" 		<?php echo ($_POST['insurance_type'] == 'auto')?'selected':''; ?>	>	<?php echo INS_translate('Auto','Automóvil'); ?>				</option>
 							<option value="general"		<?php echo ($_POST['insurance_type'] == 'general')?'selected':''; ?>>	<?php echo INS_translate('General Liability','Responsabilidad General'); ?></option>
 						</select>
 					</span>
-					<input type="text" 	value="<?php echo esc_attr($_POST['fname']); ?>" name="fname" placeholder="<?php echo INS_translate('First Name','Primero Nombre'); ?>">
-					<input type="text" 	value="<?php echo esc_attr($_POST['lname']); ?>" name="lname" placeholder="<?php echo INS_translate('Last Name','Nombre Segundo'); ?>">
+					<input type="text" 	value="<?php echo esc_attr($_POST['fname']); ?>" name="fname" placeholder="<?php echo INS_translate('First Name','Nombre'); ?>">
+					<input type="text" 	value="<?php echo esc_attr($_POST['lname']); ?>" name="lname" placeholder="<?php echo INS_translate('Last Name','Apellido'); ?>">
 					<input type="tel"  	value="<?php echo esc_attr($_POST['phone']); ?>" name="phone" placeholder="<?php echo INS_translate('Phone Number"','Número de Teléfono'); ?>	">
 					<input type="email" value="<?php echo esc_attr($_POST['email']); ?>" name="email" placeholder="<?php echo INS_translate('Email Address','Dirección de Correo Electrónico'); ?>	">
 					
@@ -60,7 +60,7 @@
 						
 					<input type="hidden" name="user_language" value="<?php echo INS_translate('english','spanish'); ?>">
 					<input type="hidden" name="submitted" value="1">
-					<input class="submit_button" type="submit" value="Submit">
+					<input class="submit_button" type="submit" value="<?php echo INS_translate('Submit','Enviar'); ?>">
 				</form>
 			</div>	
 			
