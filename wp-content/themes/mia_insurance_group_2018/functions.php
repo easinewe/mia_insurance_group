@@ -624,14 +624,15 @@ function send_mails_on_publish( $new_status, $old_status, $post )
     foreach ( $subscribers as $subscriber )
         $emails[] = $subscriber->user_email;
 
-    $body = sprintf( 'A customer has filled out the MIA Insurance quote form!
-        View customer details here... <%s>',
+    $body = sprintf( 
+		'A customer has filled out the MIA Insurance quote form! View customer details here... <%s>',
         get_permalink( $post )
     );
 
     //wp_mail( $emails, 'New entry!', $body );
 
-    wp_mail( 'eamonnfitzmaurice@gmail.com', 'New Customer from MIA Website', $body );
+    //wp_mail( 'eamonnfitzmaurice@gmail.com', 'New Customer from MIA Website', $body );
+	wp_mail( 'info@miainsurancegroup.com', 'New Customer from MIA Website', $body );
 	
 }
 
